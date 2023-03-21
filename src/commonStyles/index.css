@@ -6,6 +6,7 @@ body {
   font-family: "Norsal";
   font-weight: normal;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 * {
@@ -18,9 +19,18 @@ ul {
   margin: 0;
 }
 
-.df_color {
-  color: #6821f4;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(26.5deg, #8146f6 16.63%, #f14537 83.37%);
+  border-radius: 70px;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+  background: #ddd;
+}
+
 .df_bg {
   background-color: #6821f4;
 }
@@ -29,4 +39,4 @@ ul {
   .container {
     max-width: 1017px;
   }
-} /*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */

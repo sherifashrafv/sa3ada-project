@@ -10,16 +10,17 @@ import UserLogo from "../../assets/NavBar/account icon.svg";
 import LoginIcon from "../../assets/NavBar/login icon.svg";
 import ActiveIcon from "../../assets/NavBar/Group 16063.svg";
 import NewAccount from "../../assets/NavBar/new account.svg";
-import CartModal from "../CartModal/index";
+import SideCart from "../SideCart/index";
+import { RIGSTER_BOX_TRRIGER, CART_TRRIGGER } from "../../store/navbarSlice";
 import "./index.css";
 import { NavLink, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 export default function Default_LayOut() {
   const location = useLocation();
-  const [RegisterBox, SetRegisterBox] = useState(false);
   const [Cart, SetCart] = useState(false);
-  const triggerCartSlide = () => {
-    SetCart(!Cart);
-  };
+  const navBar = useSelector((state) => state.NavBar);
+  const dispatch = useDispatch();
+
   return (
     <div className="df_bg">
       <div className="sticky-navbar container relative mx-auto py-3">
@@ -37,12 +38,12 @@ export default function Default_LayOut() {
               <ul className="flex gap-4 items-center my-6">
                 <span className="user-info relative">
                   <img
-                    onClick={() => SetRegisterBox(!RegisterBox)}
+                    onClick={() => dispatch(RIGSTER_BOX_TRRIGER())}
                     className="cursor-pointer"
                     src={UserLogo}
                   />
                   {/* trigger-user-box */}
-                  {RegisterBox ? (
+                  {navBar.registerBox ? (
                     <div className="register-box transition duration-500 ease-in-out flex flex-col justify-center gap-2 py-2 bg-white px-3 rounded-lg">
                       <span className="flex flex-row cursor-pointer transition duration-300 ease-in-out hover:bg-slate-200 items-center gap-2">
                         <span className="logIn-title ml-auto">تسجيل دخول</span>
@@ -69,10 +70,13 @@ export default function Default_LayOut() {
 
                   {/* END=> trigger-user-box */}
                 </span>
-                <span onClick={() => SetCart(!Cart)} className="cursor-pointer">
+                <span
+                  onClick={() => dispatch(CART_TRRIGGER())}
+                  className="cursor-pointer"
+                >
                   <img src={ShoppingCart} alt="" />
                 </span>
-                <CartModal active={Cart} cartTrigger={triggerCartSlide} />
+                <SideCart />
                 <span className="cursor-pointer">
                   <img src={NotificationIcon} alt="" />
                 </span>
