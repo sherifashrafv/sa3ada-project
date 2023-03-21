@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Norsal";
+  src: local("Norsal"),
+    url("../../../public/fonts/alfont_com_Norsal-Regular.otf")
+      format("opentype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Norsal";
+  src: local("Norsal"),
+    url("../../../public/fonts/alfont_com_Norsal-Bold.otf") format("opentype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Norsal";
+  src: local("Norsal"),
+    url("../../../public/fonts/alfont_com_Norsal-ExtraLight.otf")
+      format("opentype");
+  font-weight: lighter;
+}
+@font-face {
+  font-family: "Norsal";
+  src: local("Norsal"),
+    url("../../../public/fonts/alfont_com_Norsal-ThinItalic.otf")
+      format("opentype");
+  font-style: italic;
+  font-weight: bold;
+}

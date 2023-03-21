@@ -1,0 +1,42 @@
+@import url("Fonts/index.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$default_bg: #6821f4;
+
+body {
+  font-family: "Norsal";
+  font-weight: normal;
+  box-sizing: border-box;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+@mixin linear-btn {
+  background: linear-gradient(65.18deg, #8146f6 13.77%, #f14537 77.6%);
+  border-radius: 28px;
+  color: #fff;
+}
+
+@mixin modal_title {
+  font-weight: 700;
+  font-size: 30px;
+  background: linear-gradient(45deg, #8146f6 2.76%, #f14537 88.55%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.df_bg {
+  background-color: $default_bg;
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1017px;
+  }
+}

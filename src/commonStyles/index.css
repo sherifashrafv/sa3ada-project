@@ -1,0 +1,32 @@
+@import url("Fonts/index.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  font-family: "Norsal";
+  font-weight: normal;
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.df_color {
+  color: #6821f4;
+}
+.df_bg {
+  background-color: #6821f4;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1017px;
+  }
+} /*# sourceMappingURL=index.css.map */

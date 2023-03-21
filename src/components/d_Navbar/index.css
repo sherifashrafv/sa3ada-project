@@ -1,0 +1,68 @@
+.line {
+  width: 10px;
+  height: 100%;
+  background: "";
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -35%);
+  width: 131px;
+  height: 100%;
+  z-index: 999999;
+  background: #6821f4;
+  border-radius: 50%;
+}
+
+.sticky-navbar::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  background: #7b39fb;
+  width: 100%;
+  height: 1px;
+  z-index: 27;
+}
+
+.active {
+  color: #f4b512;
+  position: relative;
+  font-weight: 700;
+}
+.active .active-icon {
+  position: absolute;
+  bottom: -100%;
+  width: 49px;
+  height: 14px;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%);
+}
+
+.icon-registeration {
+  width: 11.11px;
+  height: 11.48px;
+  -o-object-fit: fill;
+     object-fit: fill;
+  margin-top: 1px;
+}
+
+.logIn-title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.register-box {
+  position: absolute;
+  width: 135px;
+  height: 84px;
+  top: 160%;
+  z-index: 999;
+}/*# sourceMappingURL=index.css.map */

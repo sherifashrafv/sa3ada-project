@@ -1,0 +1,176 @@
+@import url("../../commonStyles/index.scss");
+.home-section {
+  position: relative;
+  height: 100%;
+  background: #6821f4;
+}
+.home-section::after {
+  content: "";
+  background: url("../../assets/Home/Path 3832.svg");
+  position: absolute;
+  bottom: -64%;
+  width: 100%;
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-position: bottom;
+}
+
+.home-box-description h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 66px;
+  letter-spacing: 0.5px;
+  color: #fff;
+  text-align: right;
+  margin: 105px 37px 0 0;
+}
+
+.btn-prize {
+  width: 232px;
+  height: 56px;
+  background: #f4b512;
+  border-radius: 28px;
+  color: #6821f4;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 37px 37px 0 0;
+}
+
+.mask-box {
+  position: absolute;
+  width: 742px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center center;
+     object-position: center center;
+  height: 336px;
+  left: -4%;
+  bottom: -65%;
+}
+
+.christmas-crackers {
+  position: absolute;
+  width: 182px;
+  height: 139.4px;
+  left: 2%;
+  top: 36%;
+}
+
+.christmas-crackers_2 {
+  position: absolute;
+  width: 101px;
+  height: 139.4px;
+  left: 32%;
+  top: 21%;
+}
+
+.icon-prize_1 {
+  position: absolute;
+  left: -15%;
+}
+
+.circle {
+  position: absolute;
+  right: -6%;
+  top: 16%;
+  transform: translate(-50%);
+}
+
+.icon-prize_2 {
+  position: absolute;
+  right: -15%;
+  bottom: -20%;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(250, 181, 189, 0.29) 0%, rgba(214, 166, 167, 0.29) 0.01%, rgba(216, 195, 207, 0.29) 48.96%, rgba(217, 218, 238, 0.29) 100%);
+}
+
+.heart-sticker {
+  position: absolute;
+  left: -15%;
+  top: 6%;
+}
+
+.cake-sticker {
+  position: absolute;
+  right: -15%;
+  top: 60%;
+}
+
+.surprise-sticker {
+  position: absolute;
+  left: -15%;
+  bottom: -2%;
+}
+
+.card-2x {
+  padding: 15px;
+  background: linear-gradient(180deg, rgba(250, 181, 189, 0.29) 0%, rgba(214, 166, 167, 0.29) 0.01%, rgba(216, 195, 207, 0.29) 48.96%, rgba(217, 218, 238, 0.29) 100%);
+}
+
+.sa3ad-box-description h1 {
+  font-weight: 700;
+  font-size: 50px;
+  text-align: right;
+}
+
+.read-more {
+  color: #6821f4;
+  text-decoration-line: underline;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.box-happineas > div {
+  width: 50%;
+}
+
+.contact-us {
+  position: relative;
+  background: linear-gradient(45deg, rgba(129, 70, 246, 0.05) 2.76%, rgba(241, 69, 55, 0.05) 88.55%);
+  margin-top: 10rem;
+  z-index: 1;
+}
+.contact-us::after {
+  background: url("../../assets/Home/Path 3834.svg");
+  content: "";
+  position: absolute;
+  top: -10%;
+  width: 100%;
+  background-size: cover;
+  height: 292px;
+  z-index: -1;
+}
+
+.contact-title {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 53px;
+  text-align: right;
+  background: linear-gradient(65.18deg, #8146f6 13.77%, #f14537 77.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.insta-btn {
+  border-radius: 12px;
+  background: url("../../assets/Home/image47.png");
+  background-size: cover;
+  width: 152px;
+  height: 64.15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: white;
+  transition: 0.5s ease-in-out;
+}
+.insta-btn:hover {
+  opacity: 0.5;
+}/*# sourceMappingURL=index.css.map */
