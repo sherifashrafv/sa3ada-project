@@ -1,3 +1,4 @@
+@use "mixins/index.scss" as *;
 @import url("Fonts/index.css");
 @tailwind base;
 @tailwind components;
@@ -8,6 +9,7 @@ body {
   font-weight: normal;
   box-sizing: border-box;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 * {
   padding: 0;
@@ -26,23 +28,17 @@ ul {
   width: 0.8rem;
   background: #ddd;
 }
-@mixin linear-btn {
-  background: linear-gradient(65.18deg, #8146f6 13.77%, #f14537 77.6%);
-  border-radius: 28px;
-  color: #fff;
-}
-
-@mixin modal_title {
-  font-weight: 700;
-  font-size: 30px;
-  background: linear-gradient(45deg, #8146f6 2.76%, #f14537 88.55%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .df_bg {
   background-color: $default_bg;
+}
+.custome-form-input {
+  @include form_input_custome;
+}
+.modal-box {
+  @include modal_box($padding: 15px, $paddingright: 35px, $paddingleft: 35px);
+}
+.btn-linear-color {
+  @include btn_linaer_customize($width: 100%, $height: 56px, $fontSize: 16px);
 }
 @media (min-width: 1024px) {
   .container {

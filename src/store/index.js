@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import navbarSlice from "./navbarSlice";
+import NavbarSlice from "./navbarSlice";
+import FormsSlice from "./forms";
+import Auth from "./auth";
 export const store = configureStore({
   reducer: {
-    NavBar: navbarSlice,
+    NavBar: NavbarSlice,
+    Forms: FormsSlice,
+    Auth: Auth,
   },
 });

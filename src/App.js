@@ -3,10 +3,11 @@ import "./commonStyles/index.css";
 import DefaultLayout from "./components/default_layout/index";
 import CustomeLayout from "./components/custome_layout/index";
 import Home from "./pages/Home/index";
-import SpecialOccasions from "./pages/specialOccasions/index";
+import BrithDay from "./pages/BrithDay/index";
+import BasicPackage from "./pages/Basicpackage/index";
 import "./commonStyles/index.css";
 import { AnimatePresence } from "framer-motion";
-function App() {
+function App() {  
   const location = useLocation();
   return (
     <div className="App">
@@ -14,11 +15,8 @@ function App() {
         <Routes key={location.pathname} location={location}>
           <Route path="/" element={<DefaultLayout />}>
             <Route index element={<Home />}></Route>
-            <Route
-              indexn
-              path="/specialOccasions"
-              element={<SpecialOccasions />}
-            ></Route>
+            <Route path="/basicPackage" element={<BasicPackage />}></Route>
+            <Route indexn path="/brithDay" element={<BrithDay />}></Route>
           </Route>
           <Route path="/about" element={<CustomeLayout />}></Route>
         </Routes>

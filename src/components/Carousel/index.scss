@@ -1,0 +1,35 @@
+.slick-track {
+  display: flex;
+  gap: 29px;
+}
+.slick-next {
+  right: 3%;
+  &:before {
+    content: "" !important;
+    background: url("../../assets/birthday/Carousel/arrow-right.svg");
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 9999999999;
+    background-repeat: no-repeat;
+  }
+}
+.slick-prev {
+  left: 5%;
+  &:before {
+    content: "" !important;
+    background: url("../../assets/birthday/Carousel/arrow-left.svg");
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 9999999999;
+    background-repeat: no-repeat;
+  }
+}
+.slick-next,
+.slick-prev {
+  top: 116% !important;
+}
+.brand-card {
+  box-shadow: 0px 7.4295px 61.5588px rgba(177, 177, 177, 0.1);
+}

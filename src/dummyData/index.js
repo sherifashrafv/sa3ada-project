@@ -1,8 +1,8 @@
-import Cake from "../assets/Home/Rectangle 291.png";
-import Cake2 from "../assets/Home/Rectangle 18.png";
-import Cake3 from "../assets/Home/Rectangle 293.png";
-import Cake4 from "../assets/Home/Rectangle 295.png";
-import Cake5 from "../assets/Home/Rectangle 299.png";
+import Cake from "../assets/basicPackage/1.png";
+import Cake2 from "../assets/basicPackage/2.png";
+import Cake3 from "../assets/basicPackage/3.png";
+import Cake4 from "../assets/basicPackage/4.png";
+import Cake5 from "../assets/basicPackage/5.png";
 const data = [
   {
     id: 1,
@@ -193,14 +193,6 @@ const data = [
   {
     id: 24,
     image: Cake4,
-    name: "كوكي كيك مزينة بالورود",
-    price: 100,
-    quantity: 0,
-    avalible: 100,
-  },
-  {
-    id: 25,
-    image: Cake5,
     name: "كوكي كيك مزينة بالورود",
     price: 100,
     quantity: 0,

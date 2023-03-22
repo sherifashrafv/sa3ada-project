@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { data } from "../../dummyData";
 import { motion } from "framer-motion";
 import AnimatedPage from "../../components/AnimationPage";
 import BreadCrumb from "../../components/breadCrumb";
@@ -11,7 +10,6 @@ import ellipse2 from "../../assets/specialOccasions/ellipse_2.svg";
 import ellipse3 from "../../assets/specialOccasions/ellipse_3.svg";
 import { Link } from "react-router-dom";
 export default function SpecialOccasions() {
-  const [dummyData, setData] = useState(data);
   return (
     <>
       <AnimatedPage>
@@ -23,7 +21,7 @@ export default function SpecialOccasions() {
                 اختر الباقة المناسبة
               </p>
               {/* start  */}
-              <Link>
+              <Link to="/basicPackage">
                 <div className="bg-[#F8F7FC;] relative grid z-[1] grid-cols-2 py-[4rem] px-[6rem] mb-[10rem]">
                   <span className="first-ellipse-card">
                     <img src={ellipse} alt="" />
@@ -45,7 +43,7 @@ export default function SpecialOccasions() {
               {/*  End  */}
             </div>
             <div className="row">
-              <Link>
+              <Link to="">
                 <div className="bg-[#FFF9EB;] relative mb-[10rem] grid z-[1] grid-cols-2 py-[4rem] px-[6rem]">
                   <span className="first-ellipse-card">
                     <img src={ellipse2} alt="" />

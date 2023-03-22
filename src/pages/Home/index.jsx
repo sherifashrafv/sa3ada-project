@@ -1,5 +1,4 @@
 import React from "react";
-import Line from "../../assets/Home/Path 3832.svg";
 import "../Home/index.css";
 import MaskGroup from "../../assets/Home/Mask group.png";
 import Crackers1 from "../../assets/Home/Group 16219.png";
