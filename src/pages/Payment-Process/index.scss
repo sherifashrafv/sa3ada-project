@@ -1,0 +1,44 @@
+@use "../../commonStyles/mixins/index" as *;
+
+.sidebox-with-products {
+  border-radius: 18px;
+  box-shadow: 0px 7px 58px rgba(177, 177, 177, 0.1);
+  .side-product:not(:last-child) {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f4ecec;
+  }
+}
+.discount-coupon {
+  box-shadow: 0px 7px 58px rgba(177, 177, 177, 0.1);
+  border-radius: 18px;
+  background: #ffffff;
+}
+.grey-input {
+  border-radius: 56.5038px;
+  height: 49px;
+  width: 100%;
+  background: #f9f9f9;
+  border: none;
+  outline: none;
+  text-align: right;
+  padding: 0 20px;
+  margin-top: 1rem;
+}
+.btn-confirm-coupon {
+  font-size: 16px;
+  color: #ffffff;
+  @include btn-instgram($width: 112px, $height: 40px);
+}
+.input-group {
+  text-align: right;
+  color: black;
+  caret-color: #6821f4;
+}
+.payment-methods {
+  background: #ffffff;
+  box-shadow: 0px 7px 58px rgba(177, 177, 177, 0.1);
+  border-radius: 18px;
+}
+.btn-confirm {
+  @include btn-instgram($width: 228px, $height: 56px);
+}

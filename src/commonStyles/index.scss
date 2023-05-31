@@ -35,13 +35,11 @@ ul {
   @include form_input_custome;
 }
 .modal-box {
-  @include modal_box($padding: 15px, $paddingright: 35px, $paddingleft: 35px);
+  @include modal_box($padding: 3rem, $paddingright: 2rem, $paddingleft: 2rem);
 }
 .btn-linear-color {
-  @include btn_linaer_customize($width: 100%, $height: 56px, $fontSize: 16px);
-}
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1017px;
+  &:disabled {
+    cursor: not-allowed;
   }
+  @include btn_linaer_customize($width: 100%, $height: 56px, $fontSize: 16px);
 }

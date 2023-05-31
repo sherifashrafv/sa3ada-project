@@ -5,65 +5,57 @@ import Password from "../../assets/login/password.svg";
 import eyeicon from "../../assets/login/eye icon.svg";
 import noEyeIcon from "../../assets/login/noEye.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { CHANGE_VALUE } from "../../store/forms";
-import { SAVE_USER_DATA } from "../../store/auth";
+import { changeValue } from "../../store/forms";
 import { useDispatch, useSelector } from "react-redux";
-import Joi from "joi";
-import axios from "axios";
 import close from "../../assets/cart/close.svg";
 import { LOGIN_MODAL } from "../../store/navbarSlice";
-
+import { LoginSchema } from "../../Validations/index";
+import { useFormik } from "formik";
+import Loader from "../loader";
+import { login } from "../../store/auth";
+import { ToastContainer } from "react-toastify";
 export default function Login() {
   const Forms = useSelector((state) => state.Forms);
-  const [errorMessage, setError] = useState("");
-  const [errorList, setErrorList] = useState([]);
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-  const getInputValue = (e) => {
-    e.preventDefault();
-    let myUser = { ...user };
-    myUser[e.target.name] = e.target.value;
-    setUser(myUser);
-  };
-  let validateFormData = () => {
-    const schema = Joi.object({
-      email: Joi.string()
-        .required()
-        .email({ tlds: { allow: ["com", "net"] } }),
-      password: Joi.string().required(),
-    });
-    return schema.validate(user, { abortEarly: false });
-  };
-  let submitFormData = async (e) => {
-    e.preventDefault();
-    let validationResponse = validateFormData();
-    console.log(validationResponse);
-    if (validationResponse.error) {
-      setErrorList(validationResponse.error.details);
+  const Auth = useSelector((state) => state.Auth);
+  const dispatch = useDispatch();
+  const onSubmit = (values, actions) => {
+    console.log(values);
+    console.log(actions);
+    const user = values;
+    if (!values) {
+      console.log("errors still handling !");
     } else {
-      let { data } = await axios.post(
-        "https://sticky-note-fe.vercel.app/signin",
-        user
-      );
-      console.log(data);
-      if (data.message == "success") {
-        localStorage.setItem("token", data.token);
-        navigate("/");
-        SAVE_USER_DATA();
-      } else {
-        setError(data.message);
-      }
+      actions.resetForm();
+      dispatch(login(user));
     }
   };
-  let navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+      },
+      validationSchema: LoginSchema,
+      onSubmit,
+    });
   return (
     <div className="modal-box">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
       <div>
         <h1 className="modal-title text-center">تسجيل دخول</h1>
-        <form dir="rtl" className="mt-[1rem]">
+        <form onSubmit={handleSubmit} dir="rtl" className="mt-[1rem]">
           <div className="flex relative flex-col items-start gap-3 mb-5">
             <span
               onClick={() => dispatch(LOGIN_MODAL())}
@@ -78,11 +70,22 @@ export default function Login() {
               </span>
             </div>
             <input
-              onChange={getInputValue}
+              onChange={handleChange}
               type="email"
-              className="custome-form-input"
+              id="email"
+              value={values.email}
+              className={
+                errors.email && touched
+                  ? "custome-form-input error"
+                  : "custome-form-input "
+              }
             />
           </div>
+          {errors.email && touched ? (
+            <p className="text-red-600 ">{errors.email}</p>
+          ) : (
+            ""
+          )}
           <div className="flex flex-col items-start gap-3 mb-3">
             <div className="flex flex-row items-center gap-3">
               <img src={Password} />
@@ -96,32 +99,48 @@ export default function Login() {
             <div className="passwrod-trigger relative w-[100%]">
               <span
                 role={"button"}
-                onClick={() => dispatch(CHANGE_VALUE())}
+                onClick={() => dispatch(changeValue())}
                 className="passwrod-trigger-icon"
               >
                 <img src={Forms.triggerPassword ? noEyeIcon : eyeicon} alt="" />
               </span>
               <input
-                onChange={getInputValue}
+                onChange={handleChange}
                 type={Forms.triggerPassword ? "text" : "password"}
                 name="password"
-                className="custome-form-input password"
+                className={
+                  errors.password && touched
+                    ? "custome-form-input password error"
+                    : "custome-form-input"
+                }
+                value={values.password}
               />
             </div>
+            {errors.password && touched ? (
+              <p className="text-red-600 ">{errors.password}</p>
+            ) : (
+              ""
+            )}
+          </div>
+          <Link className="text-[14px] font-bold pt-[1rem]" to="">
+            هل نسيت كلمة المرور ؟
+          </Link>
+          <button disabled={Auth.loader} className="btn-linear-color my-7">
+            {Auth.loader ? (
+              <Loader />
+            ) : (
+              <span className="m-auto">تسجيل الدخول</span>
+            )}
+          </button>
+          <div className="text-center">
+            <span className="text-[#949494] ">
+              ليس لديك حساب ؟
+              <span role={"button"} className="text-[#6821F4;] font-bold mr-2">
+                أنشأ حساب جديد
+              </span>
+            </span>
           </div>
         </form>
-        <Link className="text-[14px] font-bold pt-[1rem]" to="">
-          هل نسيت كلمة المرور ؟
-        </Link>
-      </div>
-      <button className="btn-linear-color my-7">تسجيل الدخول</button>
-      <div className="text-center">
-        <span className="text-[#949494] ">
-          ليس لديك حساب ؟
-          <span role={"button"} className="text-[#6821F4;] font-bold mr-2">
-            أنشأ حساب جديد
-          </span>
-        </span>
       </div>
     </div>
   );

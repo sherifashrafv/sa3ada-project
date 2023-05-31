@@ -1,24 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BreadCrumb from "../../components/breadCrumb";
 import cake from "../../assets/birthday/cake.svg";
 import search from "../../assets/birthday/search.svg";
 import "../Basicpackage/index.css";
 import Carousel from "../../components/Carousel";
 import Products from "../../components/Products";
+import { db } from "../../firebase";
+import { collection, getDocs, limit, query } from "firebase/firestore";
+
 export default function BasicPackage() {
   const [brand, setbrand] = useState([
     { id: 1, label: "Decorated", isChecked: false },
     { id: 2, label: "Basic", isChecked: true },
   ]);
+  const [cake, setCake] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [brandHolder, setBrandingHolder] = useState();
+
+  const getData = async () => {
+    const cakesRef = collection(db, "products");
+    getDocs(cakesRef)
+      .then((response) => {
+        const cak = response.docs.map((doc) => ({
+          data: doc.data(),
+          id: doc.id,
+        }));
+        setCake(cak);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
   const handleChange = (e) => {
+    setBrandingHolder(e.target.checked);
     setbrand(
       brand.map((o) =>
         o.id == e.target.value
-          ? { ...o, isChecked: !o.isChecked }
+          ? {
+              ...o,
+              isChecked: !o.isChecked,
+            }
           : { ...o, isChecked: false }
       )
     );
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
       <BreadCrumb />
@@ -53,9 +82,9 @@ export default function BasicPackage() {
                         {item.label}
                         <input
                           type="checkbox"
-                          checked={item.isChecked}
+                          name={item.label}
                           value={item.id}
-                          onChange={handleChange}
+                          onChange={(e) => handleChange(e)}
                         />
                       </label>
                     ))}
@@ -67,7 +96,7 @@ export default function BasicPackage() {
           </div>
         </div>
       </div>
-      <Products />
+      <Products loading={loading} cakes={cake} />
     </>
   );
 }

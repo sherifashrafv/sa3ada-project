@@ -18,3 +18,8 @@
   right: -3%;
   cursor: pointer;
 }
+.custome-form-input {
+  &.error {
+    border-color: red;
+  }
+}

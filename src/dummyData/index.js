@@ -11,6 +11,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 4,
@@ -35,6 +38,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 6,
@@ -51,6 +56,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 7,
@@ -59,6 +65,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 8,
@@ -67,6 +74,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 9,
@@ -75,6 +83,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 10,
@@ -91,6 +100,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 12,
@@ -99,6 +109,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 13,
@@ -107,6 +118,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 14,
@@ -115,6 +127,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 15,
@@ -123,6 +136,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   //
   {
@@ -132,6 +146,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 17,
@@ -140,6 +155,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 18,
@@ -148,6 +164,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 19,
@@ -156,6 +173,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 20,
@@ -164,6 +182,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   //
   {
@@ -173,6 +192,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 22,
@@ -181,6 +201,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 23,
@@ -189,6 +210,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
   {
     id: 24,
@@ -197,6 +219,7 @@ const data = [
     price: 100,
     quantity: 0,
     avalible: 100,
+    gallary: [Cake, Cake2, Cake3, Cake4],
   },
 ];
 export { data };

@@ -6,11 +6,10 @@ export const formsSlice = createSlice({
   name: "forms",
   initialState,
   reducers: {
-    CHANGE_VALUE: (state) => {
+    changeValue: (state) => {
       state.triggerPassword = !state.triggerPassword;
     },
-
   },
 });
-export const { CHANGE_VALUE } = formsSlice.actions;
+export const { changeValue } = formsSlice.actions;
 export default formsSlice.reducer;

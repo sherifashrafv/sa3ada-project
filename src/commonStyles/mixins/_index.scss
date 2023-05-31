@@ -50,3 +50,14 @@
   font-weight: bold;
   outline: none;
 }
+
+@mixin btn-instgram($width, $height) {
+  border-radius: 28px;
+  background: linear-gradient(65.18deg, #8146f6 13.77%, #f14537 77.6%);
+  font-size: 16px;
+  height: $height;
+  line-height: $height;
+  color: #ffffff;
+  width: $width;
+  outline: none;
+}

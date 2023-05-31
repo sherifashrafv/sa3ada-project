@@ -5,6 +5,7 @@ import FacebookLogo from "../../assets/NavBar/facebook.svg";
 import InstaLogo from "../../assets/NavBar/instgramicon.svg";
 import ShoppingCart from "../../assets/NavBar/shoppingCart.svg";
 import NotificationIcon from "../../assets/NavBar/notificationicon.svg";
+import LogOutIcon from "../../assets/Icons/logout.svg";
 import Logo from "../../assets/NavBar/SaadaLogo1.svg";
 import UserLogo from "../../assets/NavBar/account icon.svg";
 import LoginIcon from "../../assets/NavBar/login icon.svg";
@@ -18,10 +19,11 @@ import {
   REGISTER_MODAL,
 } from "../../store/navbarSlice";
 import "./index.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ModalContainer from "../ModalContainer/index";
-export default function Default_LayOut() {
+import { getUserData, logOut } from "../../store/auth";
+export default function Default_LayOut({ userInfo }) {
   const location = useLocation();
   const navBar = useSelector((state) => state.NavBar);
   const dispatch = useDispatch();
@@ -32,8 +34,8 @@ export default function Default_LayOut() {
       <div className="df_bg">
         <div className="sticky-navbar container relative mx-auto py-3">
           <div className="flex flex-row justify-between items-center">
-            <div>
-              <div className="left-links flex gap-2 items-center ">
+            <div className="flex flex-col gap-3">
+              <div className="left-links flex gap-2 items-center h-[30px]">
                 <span>
                   <img src={LangIcon} alt="" />
                 </span>
@@ -42,74 +44,137 @@ export default function Default_LayOut() {
                 <p className="text-white">تواصل معنا</p>
               </div>
               <div className="flex items-center gap-4">
-                <ul className="flex gap-4 items-center my-6">
-                  <span className="user-info relative">
-                    <img
+                {userInfo !== null ? (
+                  <ul className="flex gap-4 items-center ">
+                    <span
+                      className="user-box"
                       onClick={() => dispatch(RIGSTER_BOX_TRRIGER())}
+                    >
+                      {userInfo.name.slice(0, 1)}
+                      {navBar.registerBox ? (
+                        <div className="user-links flex flex-col">
+                          <div className="flex flex-col">
+                            <Link
+                              className="decoration-transparent block"
+                              to={`/userInfo/${userInfo.id}`}
+                            >
+                              <div className="user-information flex flex-row justify-between items-center">
+                                <div className="user-name ml-auto w-full pr-2">
+                                  <p className="font-bold text-[16px] text-black text-right">
+                                    {userInfo.name}
+                                  </p>
+                                </div>
+                                <div className="user-image ml-auto df-bg-user ">
+                                  <span>{userInfo.name.substr(0, 1)}</span>
+                                </div>
+                              </div>
+                            </Link>
+                            <div className="email-info cursor-auto">
+                              <span className="text-black ">
+                                {/* {userInfo.email} */}
+                              </span>
+                            </div>
+                            <div className="flex flex-row justify-between items-center mt-3">
+                              <div
+                                onClick={() => dispatch(logOut())}
+                                role="button"
+                                className="user-name ml-auto w-full pr-2 "
+                              >
+                                <p className="font-bold text-[12px] text-black text-right">
+                                  تسجيل الخروج
+                                </p>
+                              </div>
+                              <div className="logOut-icon ml-auto">
+                                <img src={LogOutIcon} alt="" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </span>
+                    <span
+                      onClick={() => dispatch(CART_TRRIGGER())}
                       className="cursor-pointer"
-                      src={UserLogo}
-                    />
-                    {/* trigger-user-box */}
-                    {navBar.registerBox ? (
-                      <div className="register-box transition duration-500 ease-in-out flex flex-col justify-center gap-2 py-2 bg-white px-3 rounded-lg">
-                        <span className="flex flex-row cursor-pointer transition duration-300 ease-in-out hover:bg-slate-200 items-center gap-2">
-                          <span
-                            onClick={() => dispatch(LOGIN_MODAL())}
-                            className="logIn-title ml-auto"
-                          >
-                            تسجيل دخول
-                          </span>
+                    >
+                      <img src={ShoppingCart} alt="" />
+                    </span>
+                    <SideCart />
+                    <span className="cursor-pointer">
+                      <img src={NotificationIcon} alt="" />
+                    </span>
+                  </ul>
+                ) : (
+                  <ul className="flex gap-4 items-center ">
+                    <span className="user-info relative">
+                      <img
+                        onClick={() => dispatch(RIGSTER_BOX_TRRIGER())}
+                        className="cursor-pointer"
+                        src={UserLogo}
+                      />
+                      {/* trigger-user-box */}
+                      {navBar.registerBox ? (
+                        <div className="register-box transition duration-500 ease-in-out flex flex-col justify-center gap-2 py-2 bg-white px-3 rounded-lg">
+                          <span className="flex flex-row cursor-pointer transition duration-300 ease-in-out hover:bg-slate-200 items-center gap-2">
+                            <span
+                              onClick={() => dispatch(LOGIN_MODAL())}
+                              className="logIn-title ml-auto"
+                            >
+                              تسجيل دخول
+                            </span>
 
-                          <img
-                            className="icon-registeration ml-auto"
-                            src={LoginIcon}
-                            alt=""
-                          />
-                        </span>
-                        <span className="flex cursor-pointer transition duration-300 ease-in-out hover:bg-slate-200 flex-row items-center gap-2">
-                          <span
-                            onClick={() => dispatch(REGISTER_MODAL())}
-                            className="logIn-title ml-auto"
-                          >
-                            إنشاء حساب جديد
+                            <img
+                              className="icon-registeration ml-auto"
+                              src={LoginIcon}
+                              alt=""
+                            />
                           </span>
-                          <img
-                            className="icon-registeration ml-auto"
-                            src={NewAccount}
-                            alt=""
-                          />
-                        </span>
-                      </div>
-                    ) : (
-                      ""
-                    )}
+                          <span className="flex cursor-pointer transition duration-300 ease-in-out hover:bg-slate-200 flex-row items-center gap-2">
+                            <span
+                              onClick={() => dispatch(REGISTER_MODAL())}
+                              className="logIn-title ml-auto"
+                            >
+                              إنشاء حساب
+                            </span>
+                            <img
+                              className="icon-registeration ml-auto"
+                              src={NewAccount}
+                              alt=""
+                            />
+                          </span>
+                        </div>
+                      ) : (
+                        ""
+                      )}
 
-                    {/* END=> trigger-user-box */}
-                  </span>
-                  <span
-                    onClick={() => dispatch(CART_TRRIGGER())}
-                    className="cursor-pointer"
-                  >
-                    <img src={ShoppingCart} alt="" />
-                  </span>
-                  <SideCart />
-                  <span className="cursor-pointer">
-                    <img src={NotificationIcon} alt="" />
-                  </span>
-                </ul>
+                      {/* END=> trigger-user-box */}
+                    </span>
+                    <span
+                      onClick={() => dispatch(CART_TRRIGGER())}
+                      className="cursor-pointer"
+                    >
+                      <img src={ShoppingCart} alt="" />
+                    </span>
+                    <SideCart />
+                    <span className="cursor-pointer">
+                      <img src={NotificationIcon} alt="" />
+                    </span>
+                  </ul>
+                )}
                 <ul className="flex gap-4 items-center">
                   <span>
-                    <NavLink className="text-white" to="/مولود جديد">
+                    <NavLink className="text-white font-bold" to="/مولود جديد">
                       مولود جديد
                     </NavLink>
                   </span>
                   <span>
-                    <NavLink className="text-white" to="/مولود جديد">
+                    <NavLink className="text-white font-bold" to="/مولود جديد">
                       هدايا زواج
                     </NavLink>
                   </span>
                   <span>
-                    <NavLink className="text-white" to="/هدايا تخرج">
+                    <NavLink className="text-white font-bold" to="/هدايا تخرج">
                       هدايا تخرج
                     </NavLink>
                   </span>
@@ -117,8 +182,8 @@ export default function Default_LayOut() {
               </div>
             </div>
             {/*  */}
-            <div>
-              <div className="right-links flex gap-5 items-center justify-end">
+            <div className="flex flex-col gap-3">
+              <div className="right-links flex gap-5 items-center justify-end h-[30px]">
                 <span>
                   <img src={Snap_Chat} alt="" />
                 </span>
@@ -129,7 +194,7 @@ export default function Default_LayOut() {
                   <img src={InstaLogo} alt="" />
                 </span>
               </div>
-              <div className="flex gap-2 items-center my-6">
+              <div className="flex gap-2 items-center ">
                 <ul className="flex gap-11 font-bold items-center">
                   <span>
                     <NavLink
@@ -168,7 +233,6 @@ export default function Default_LayOut() {
 
                   <span>
                     <NavLink
-                      exact
                       className={({ isActive }) =>
                         isActive ? `active` : "text-white"
                       }

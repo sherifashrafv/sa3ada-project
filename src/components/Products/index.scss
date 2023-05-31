@@ -1,3 +1,17 @@
+.product-title {
+  transition: all 0.5s ease-in-out;
+}
 .product-card {
   box-shadow: 0px 7px 58px rgba(177, 177, 177, 0.1);
+  border: 2px dashed #f14537;
+  border-color: transparent;
+  overflow: hidden;
+  &:hover {
+    border: 2px solid #f14537 !important;
+    .product-title {
+      color: #f14537;
+      margin-top: -0.5rem;
+      margin-right: 2.5rem;
+    }
+  }
 }

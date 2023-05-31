@@ -46,8 +46,6 @@
 }
 
 .icon-registeration {
-  width: 11.11px;
-  height: 11.48px;
   -o-object-fit: fill;
      object-fit: fill;
   margin-top: 1px;
@@ -65,4 +63,79 @@
   height: 84px;
   top: 160%;
   z-index: 999;
+}
+
+.user-box {
+  width: 20px;
+  height: 20px;
+  background: #f4b512;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  line-height: 15px;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+.user-box.active {
+  background: #ffffff;
+  color: black !important;
+  border: 1px solid #f4b512;
+}
+
+.user-links {
+  top: 136%;
+  position: absolute;
+  left: 0;
+  width: 9rem;
+  height: 115px;
+  background: #ffffff;
+  z-index: 3333;
+  border-radius: 14px;
+  padding: 18px 10px;
+}
+
+.df-bg-user {
+  width: 20px;
+  height: 20px;
+  background: #f4b512;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  line-height: 15px;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+
+.user-information p {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all !important;
+}
+
+.email-info {
+  padding: 7px 15px 9px 0px;
+  border-bottom: 1px solid rgba(113, 113, 113, 0.2901960784);
+}
+.email-info span {
+  font-size: 13px;
+  color: #717171;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #6c6c6c;
+  word-break: break-all !important;
+}
+.email-info .logOut-icon img {
+  height: 20px;
+  width: 20px;
 }/*# sourceMappingURL=index.css.map */

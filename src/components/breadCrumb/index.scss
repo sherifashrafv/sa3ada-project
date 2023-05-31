@@ -31,10 +31,28 @@
   right: -50%;
   top: 30%;
   transform: translate(-50%, -35%);
+  animation: fly-me-to-the-moon 3s backwards;
+}
+@keyframes fly-me-to-the-moon {
+  0% {
+    transform: translate(-674%, -25%);
+  }
+  100% {
+    transform: translate(-50%, -35%);
+  }
 }
 .left-fly {
   position: absolute;
   left: -27%;
   top: 33%;
   transform: translate(-50%, -35%);
+  animation: iam-coming-home 3s backwards;
+}
+@keyframes iam-coming-home {
+  0% {
+    transform: translate(674%, -25%);
+  }
+  100% {
+    transform: translate(-50%, -35%);
+  }
 }

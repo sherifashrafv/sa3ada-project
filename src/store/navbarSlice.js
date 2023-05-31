@@ -21,9 +21,11 @@ export const navbarSlice = createSlice({
     },
     LOGIN_MODAL: (state) => {
       state.login = !state.login;
+      state.registerBox = !state.registerBox;
     },
     REGISTER_MODAL: (state) => {
       state.register = !state.register;
+      state.registerBox = !state.registerBox;
     },
   },
 });

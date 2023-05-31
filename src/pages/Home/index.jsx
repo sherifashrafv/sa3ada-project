@@ -273,13 +273,7 @@ export default function Home() {
                   <img src={CackeHearts} alt="" />
                 </div>
               </div>
-              <div className="grid grid-cols-5 mt-[8rem]  gap-14">
-                <img src={FristCake} alt="" />
-                <img className="mt-[8rem]" src={SecondCake} alt="" />
-                <img src={ThirdCake} alt="" />
-                <img className="mt-[8rem]" src={FourthCake} alt="" />
-                <img src={FifithCake} alt="" />
-              </div>
+
               <div className="flex items-center justify-center mt-[7rem] pb-[4rem]">
                 <Link className="insta-btn gap-1 items-center">
                   <span>
@@ -288,6 +282,15 @@ export default function Home() {
                   <span>Sadaa.co</span>
                 </Link>
               </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="grid px-9 grid-cols-5 mt-[8rem]  gap-14 pb-[8rem]">
+              <img src={FristCake} alt="" />
+              <img className="mt-[8rem]" src={SecondCake} alt="" />
+              <img src={ThirdCake} alt="" />
+              <img className="mt-[8rem]" src={FourthCake} alt="" />
+              <img src={FifithCake} alt="" />
             </div>
           </div>
         </section>
