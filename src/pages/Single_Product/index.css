@@ -1,0 +1,16 @@
+.slick-dots .slick-thumb li {
+  width: 25%;
+}
+
+.img-gallery #img-slider {
+  height: 96px;
+}
+
+.thumnails {
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+  border-radius: 18px;
+}
+.thumnails.active {
+  opacity: 1;
+}/*# sourceMappingURL=index.css.map */

@@ -155,6 +155,80 @@ export default function BreadCrumb() {
               ) : (
                 ""
               )}
+              {location.pathname === "/profile" ? (
+                <div className="dynamic-bread-crumb">
+                  <div
+                    dir="rtl"
+                    className="flex items-center justify-center flex-row gap-2 mt-9"
+                  >
+                    <Link to="/" className="breadcrumb-subtitle">
+                      الرئيسية
+                    </Link>
+                    <span className="arrow mt-2">
+                      <img src={arrow} alt="" />
+                    </span>
+                    <Link to="/cart" className="breadcrumb-subtitle">
+                      الحساب
+                    </Link>
+                    <span className="arrow mt-2">
+                      <img src={arrow} alt="" />
+                    </span>
+                    <span className="breadcrumb-subtitle"> الحساب الشخصي</span>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+              {location.pathname === "/profile/orders" ? (
+                <div className="dynamic-bread-crumb">
+                  <div
+                    dir="rtl"
+                    className="flex items-center justify-center flex-row gap-2 mt-9"
+                  >
+                    <Link to="/" className="breadcrumb-subtitle">
+                      الرئيسية
+                    </Link>
+                    <span className="arrow mt-2">
+                      <img src={arrow} alt="" />
+                    </span>
+                    <Link to="/cart" className="breadcrumb-subtitle">
+                      الحساب
+                    </Link>
+                    <span className="arrow mt-2">
+                      <img src={arrow} alt="" />
+                    </span>
+                    <span className="breadcrumb-subtitle"> الطلبات</span>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+              {location.pathname === "/profile/EditPassword" ? (
+                <div className="dynamic-bread-crumb">
+                  <div
+                    dir="rtl"
+                    className="flex items-center justify-center flex-row gap-2 mt-9"
+                  >
+                    <Link to="/" className="breadcrumb-subtitle">
+                      الرئيسية
+                    </Link>
+                    <span className="arrow mt-2">
+                      <img src={arrow} alt="" />
+                    </span>
+                    <Link to="/cart" className="breadcrumb-subtitle">
+                      الحساب
+                    </Link>
+                    <span className="arrow mt-2">
+                      <img src={arrow} alt="" />
+                    </span>
+                    <span className="breadcrumb-subtitle">
+                      تغيير كلمة المرور
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

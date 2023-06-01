@@ -16,6 +16,7 @@ import {
 } from "firebase/firestore";
 import { LOGIN_MODAL, REGISTER_MODAL } from "./navbarSlice";
 import { toast } from "react-toastify";
+import { Navigate } from "react-router-dom";
 //
 export const signUp = createAsyncThunk(
   "auth/signup",
@@ -59,6 +60,7 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkApi) => {
   try {
     localStorage.removeItem("user-info");
     await signOut(auth);
+    <Navigate to="/"/>
   } catch (e) {
     return rejectWithValue(e.Message);
   }

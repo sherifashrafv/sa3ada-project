@@ -13,6 +13,11 @@ import PaymentPorccess from "./pages/Payment-Process";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "./store/auth";
+import Profile from "./pages/Profile";
+import ProfileDetails from "./pages/ProfileDetails";
+import Orders from "./pages/orders";
+import EditPassword from "./pages/Edit-Password";
+
 // import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const location = useLocation();
@@ -36,6 +41,14 @@ function App() {
             <Route path="/brithDay" element={<BrithDay />}></Route>
             <Route path="/product/:id" element={<SingleProduct />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/profile" element={<Profile />}>
+              <Route path="/profile" element={<ProfileDetails />}></Route>
+              <Route path="/profile/orders" element={<Orders />}></Route>
+              <Route
+                path="/profile/EditPassword"
+                element={<EditPassword />}
+              ></Route>
+            </Route>
             <Route
               path="/payment-process"
               element={
