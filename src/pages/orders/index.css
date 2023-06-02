@@ -21,6 +21,10 @@
   line-height: 48px;
   cursor: pointer;
 }
+.label-orders.active {
+  border-color: #6821f4 !important;
+  color: #6821f4;
+}
 
 .label-orders.label_active {
   border-color: #6821f4 !important;
@@ -56,6 +60,10 @@
   cursor: pointer;
 }
 .label-order-button.label_active {
+  border-color: #6821f4 !important;
+  color: #6821f4;
+}
+.label-order-button.active {
   border-color: #6821f4 !important;
   color: #6821f4;
 }

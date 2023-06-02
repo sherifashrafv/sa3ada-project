@@ -52,7 +52,6 @@ function App() {
             <Route
               path="/payment-process"
               element={
-                // <ProtectedRoute>
                 <PaymentPorccess />
                 // </ProtectedRoute>
               }

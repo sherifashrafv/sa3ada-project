@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import AnimatedPage from "../../components/AnimationPage";
 import BreadCrumb from "../../components/breadCrumb";
 import Image1 from "../../assets/specialOccasions/1.svg";
