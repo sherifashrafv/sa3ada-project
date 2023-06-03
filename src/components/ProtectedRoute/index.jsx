@@ -1,12 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({ userData, children }) {
-  const navigate = useNavigate();
-  if (userData == null && localStorage.getItem("user-info") == null) {
-    return navigate("/");
+export default function ProtectedRoute({ userData, children }) {
+  if (userData == null) {
+    return <Navigate to="/" replace />;
   } else {
     return children;
   }
 }
-export default ProtectedRoute;

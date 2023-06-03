@@ -18,7 +18,7 @@ import ProfileDetails from "./pages/ProfileDetails";
 import Orders from "./pages/orders";
 import EditPassword from "./pages/Edit-Password";
 
-// import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const location = useLocation();
   const userData = localStorage.getItem("user-info");
@@ -41,12 +41,37 @@ function App() {
             <Route path="/brithDay" element={<BrithDay />}></Route>
             <Route path="/product/:id" element={<SingleProduct />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
-            <Route path="/profile" element={<Profile />}>
-              <Route path="/profile" element={<ProfileDetails />}></Route>
-              <Route path="/profile/orders" element={<Orders />}></Route>
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute userData={userData}>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            >
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute userData={userData}>
+                    <ProfileDetails />
+                  </ProtectedRoute>
+                }
+              ></Route>
+              <Route
+                path="/profile/orders"
+                element={
+                  <ProtectedRoute userData={userData}>
+                    <Orders />
+                  </ProtectedRoute>
+                }
+              ></Route>
               <Route
                 path="/profile/EditPassword"
-                element={<EditPassword />}
+                element={
+                  <ProtectedRoute userData={userData}>
+                    <EditPassword />
+                  </ProtectedRoute>
+                }
               ></Route>
             </Route>
             <Route
