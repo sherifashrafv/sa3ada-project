@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Product from "../../assets/cart/Rectangle 9615.svg";
 import deleteIcon from "../../assets/cart/delete icon.svg";
 import { Link } from "react-router-dom";
+import { DeleteProduct } from "../../store/cart";
 export default function CartModal() {
   const navBar = useSelector((state) => state.NavBar);
-  const cart = useSelector((state) => state.Cart);
+  const { cart } = useSelector((state) => state.Cart);
+
   console.log(cart);
   const dispatch = useDispatch();
   return (
@@ -30,27 +32,33 @@ export default function CartModal() {
           <div className="content flex flex-col h-[100%] p-[15px 22px] mt-[3rem]">
             <div>
               <p className="length text-right pr-5 mt-[4rem] text-[#6821F4]">
-                السلة : 2 منتجات
+                السلة : {cart.length} منتجات
               </p>
             </div>
             <ul dir="rtl" className="incart-items mt-8 px-5">
-              <li className="flex pb-3 mb-4 relative justify-start gap-5 flex-row items-start border-b-slate-300">
-                <span className="delete-icon">
-                  <img src={deleteIcon} alt="" />
-                </span>
-                <div>
-                  <img src={Product} alt="" />
-                </div>
-                <div className="product-description flex-col gap-5">
-                  <h2 className="product-title font-bold">
-                    كوكي كيك مزينة بالورود
-                  </h2>
-                  <span className="mt-4 text-[#949494]">
-                    السعر:&nbsp;
-                    <span className="text-[#242424] font-bold">100 ر س</span>
+              {cart.map((item) => (
+                <li className="flex pb-3 mb-4 relative justify-start gap-5 flex-row items-start border-b-slate-300">
+                  <span
+                    onClick={() => dispatch(DeleteProduct(item.id))}
+                    className="delete-icon"
+                  >
+                    <img src={deleteIcon} alt="" />
                   </span>
-                </div>
-              </li>
+                  <div>
+                    <img src={item.image} alt="" />
+                  </div>
+                  <div className="product-description flex-col gap-5">
+                    <h2 className="product-title font-bold">
+                      كوكي كيك مزينة بالورود
+                    </h2>
+                    <span className="mt-4 text-[#949494]">
+                      السعر:&nbsp;
+                      <span className="text-[#242424] font-bold">100 ر س</span>
+                    </span>
+                  </div>
+                </li>
+              ))}
+
               <li className="flex flex-row mb-[1rem] items-center justify-between">
                 <span className="text-[#949494]">الاجمالي</span>
                 <span className="total-price text-[#6821F4]">80.00 رس</span>

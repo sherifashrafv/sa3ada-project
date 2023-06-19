@@ -4,7 +4,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-//
 import { auth, db } from "../firebase/index";
 import {
   doc,
@@ -60,7 +59,7 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkApi) => {
   try {
     localStorage.removeItem("user-info");
     await signOut(auth);
-    <Navigate to="/"/>
+    <Navigate to="/" />;
   } catch (e) {
     return rejectWithValue(e.Message);
   }
@@ -69,7 +68,7 @@ export const getUserData = createAsyncThunk(
   "auth/getUserData",
   async (id, thunkApi) => {
     console.log(id);
-    const { rejectWithValue, getState } = thunkApi;
+    const { rejectWithValue } = thunkApi;
     try {
       const q = query(collection(db, "users"), where("id", "==", id));
       const querySnapshot = await getDocs(q);

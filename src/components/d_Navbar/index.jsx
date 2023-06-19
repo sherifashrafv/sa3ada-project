@@ -1,32 +1,36 @@
 import React from "react";
-import LangIcon from "../../assets/NavBar/lang.svg";
-import Snap_Chat from "../../assets/NavBar/snapchat_icon.svg";
-import FacebookLogo from "../../assets/NavBar/facebook.svg";
-import InstaLogo from "../../assets/NavBar/instgramicon.svg";
-import ShoppingCart from "../../assets/NavBar/shoppingCart.svg";
-import NotificationIcon from "../../assets/NavBar/notificationicon.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import LogOutIcon from "../../assets/Icons/logout.svg";
+import ActiveIcon from "../../assets/NavBar/Group 16063.svg";
 import Logo from "../../assets/NavBar/SaadaLogo1.svg";
 import UserLogo from "../../assets/NavBar/account icon.svg";
+import FacebookLogo from "../../assets/NavBar/facebook.svg";
+import InstaLogo from "../../assets/NavBar/instgramicon.svg";
+import LangIcon from "../../assets/NavBar/lang.svg";
 import LoginIcon from "../../assets/NavBar/login icon.svg";
-import ActiveIcon from "../../assets/NavBar/Group 16063.svg";
 import NewAccount from "../../assets/NavBar/new account.svg";
-import SideCart from "../SideCart/index";
+import NotificationIcon from "../../assets/NavBar/notificationicon.svg";
+import ShoppingCart from "../../assets/NavBar/shoppingCart.svg";
+import Snap_Chat from "../../assets/NavBar/snapchat_icon.svg";
+import { logOut } from "../../store/auth";
 import {
-  RIGSTER_BOX_TRRIGER,
   CART_TRRIGGER,
   LOGIN_MODAL,
   REGISTER_MODAL,
+  RIGSTER_BOX_TRRIGER,
 } from "../../store/navbarSlice";
-import "./index.css";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import ModalContainer from "../ModalContainer/index";
-import { getUserData, logOut } from "../../store/auth";
+import SideCart from "../SideCart/index";
+import "./index.css";
+import SideMenu from "../SIdeMenu";
+import { useState } from "react";
 export default function Default_LayOut({ userInfo }) {
   const location = useLocation();
   const navBar = useSelector((state) => state.NavBar);
   const dispatch = useDispatch();
+
+  const [sideMenu, setSideMenu] = useState(false);
 
   return (
     <>
@@ -35,7 +39,7 @@ export default function Default_LayOut({ userInfo }) {
         <div className="sticky-navbar container relative mx-auto py-3">
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-col gap-3">
-              <div className="left-links flex gap-2 items-center h-[30px]">
+              <div className="nav-links left-links lg:flex xl:flex md:hidden sm:hidden gap-2 items-center h-[30px]">
                 <span>
                   <img src={LangIcon} alt="" />
                 </span>
@@ -106,7 +110,7 @@ export default function Default_LayOut({ userInfo }) {
                     </span>
                   </ul>
                 ) : (
-                  <ul className="flex gap-4 items-center ">
+                  <ul className="nav-links lg:flex xl:flex md:hidden sm:hidden  gap-4 items-center ">
                     <span className="user-info relative">
                       <img
                         onClick={() => dispatch(RIGSTER_BOX_TRRIGER())}
@@ -162,7 +166,7 @@ export default function Default_LayOut({ userInfo }) {
                     </span>
                   </ul>
                 )}
-                <ul className="flex gap-4 items-center">
+                <ul className="nav-links lg:flex xl:flex md:hidden sm:hidden gap-4 items-center">
                   <span>
                     <NavLink className="text-white font-bold" to="/مولود جديد">
                       مولود جديد
@@ -183,7 +187,7 @@ export default function Default_LayOut({ userInfo }) {
             </div>
             {/*  */}
             <div className="flex flex-col gap-3">
-              <div className="right-links flex gap-5 items-center justify-end h-[30px]">
+              <div className="nav-links right-links lg:flex xl:flex md:hidden sm:hidden  gap-5 items-center justify-end h-[30px]">
                 <span>
                   <img src={Snap_Chat} alt="" />
                 </span>
@@ -195,7 +199,7 @@ export default function Default_LayOut({ userInfo }) {
                 </span>
               </div>
               <div className="flex gap-2 items-center ">
-                <ul className="flex gap-11 font-bold items-center">
+                <ul className="nav-links lg:flex xl:flex md:hidden sm:hidden gap-11 font-bold items-center">
                   <span>
                     <NavLink
                       className={({ isActive }) =>
@@ -251,11 +255,22 @@ export default function Default_LayOut({ userInfo }) {
                 </ul>
               </div>
             </div>
-            <span className="logo">
+            <span className="logo ">
               <img src={Logo} alt="" />
+            </span>
+            <span
+              onClick={() => setSideMenu(!sideMenu)}
+              className="mega-menu cursor-pointer"
+            >
+              <i class="fas fa-bars"></i>
             </span>
           </div>
         </div>
+        {/* SideMenu for-Mobile-Only */}
+        <SideMenu
+          cancelActive={() => setSideMenu(!sideMenu)}
+          activeSide={sideMenu}
+        />
       </div>
     </>
   );

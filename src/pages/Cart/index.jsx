@@ -4,6 +4,7 @@ import "./index.css";
 import Cake from "../../assets/basicPackage/1.png";
 import deleteIcon from "../../assets/cart/delete icon.svg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Cart() {
   const [loading, setLoading] = useState(false);
@@ -12,14 +13,14 @@ export default function Cart() {
       setLoading(true);
     }, 1500);
   };
+  const { cart } = useSelector((state) => state.Cart);
   return (
     <div className="text-right">
       <BreadCrumb />
-
       <div className="container m-auto mt-[8rem]">
         <div className="row">
           <h1 dir="rtl" className="text-right mb-5 text-[#6821F4]">
-            السلة : 2 منتجات
+            السلة : {cart.length} منتجات
           </h1>
           <div className="grid lg-grid-cols-3 gap-5 md:grid-cols-3">
             <div>

@@ -15,6 +15,7 @@
   z-index: 999999;
   background: #6821f4;
   border-radius: 50%;
+  transition: all 0.5s ease-in;
 }
 .sticky-navbar {
   &::before {
@@ -22,7 +23,7 @@
     position: absolute;
     left: 50%;
     right: 50%;
-    top: 40%;
+    top: 50%;
     transform: translate(-50%, -50%);
     background: #7b39fb;
     width: 100%;

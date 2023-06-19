@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import ProfileDetails from "./pages/ProfileDetails";
 import Orders from "./pages/orders";
 import EditPassword from "./pages/Edit-Password";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 function App() {

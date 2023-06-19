@@ -73,25 +73,25 @@ export default function Home() {
             </span>
             <div className="row">
               <div className="grid lg:grid-cols-6 md:grid-cols-3 gap-5">
-                <div className=" w-[100%] h-[200px] md:order-[4] rounded-[18px] flex justify-center flex-col items-center gap-6 bg-white shadow-[0_7px_58px_rgb(117,117,117,0.1)]">
+                <div className=" w-[100%] h-[200px] md:order-[4] sm:order-[4] rounded-[18px] flex justify-center flex-col items-center gap-6 bg-white shadow-[0_7px_58px_rgb(117,117,117,0.1)]">
                   <span>
                     <img src={ReapetIcon} alt="" />
                   </span>
                   <span className="font-extrabold">شحن سريع</span>
                 </div>
-                <div className="w-[100%] h-[200px] md:order-[4] rounded-[18px] flex justify-center flex-col items-center gap-6 bg-white shadow-[0_7px_58px_rgb(117,117,117,0.1)]">
+                <div className="w-[100%] h-[200px] md:order-[4] sm:order-[4] rounded-[18px] flex justify-center flex-col items-center gap-6 bg-white shadow-[0_7px_58px_rgb(117,117,117,0.1)]">
                   <span>
                     <img src={Correct} alt="" />
                   </span>
                   <span className="font-extrabold">طرق دفع آمنة</span>
                 </div>
-                <div className="w-[100%] h-[200px] lg:order-[4] md:order-[5]  rounded-[18px] flex justify-center flex-col items-center gap-6 bg-white shadow-[0_7px_58px_rgb(117,117,117,0.1)]">
+                <div className="w-[100%] h-[200px] lg:order-[4] sm:order-[4] md:order-[5]  rounded-[18px] flex justify-center flex-col items-center gap-6 bg-white shadow-[0_7px_58px_rgb(117,117,117,0.1)]">
                   <span>
                     <img src={Prize} alt="" />
                   </span>
                   <span className="font-extrabold">هدايا مميزة</span>
                 </div>
-                <div className="col-span-3 lg:order-[4]  md:order-[3] prize-box flex items-center relative justify-center ">
+                <div className="col-span-3 lg:order-[4]  md:order-[3] sm:order-[3] prize-box flex items-center relative justify-center ">
                   <h1 className="leading-[3rem] mr-[6rem] prize-title p-[20px] text-[48px] text-right font-extrabold ">
                     خصص هديتك مع سعادة
                   </h1>
@@ -213,7 +213,7 @@ export default function Home() {
         <section>
           <div className="container m-auto">
             <div className="row">
-              <div className="grid grid-cols-2">
+              <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
                 <div className="sada-box flex flex-col gap-5">
                   <div className="w-[200px] text-right">
                     <img className="h-[172px] ml-auto" src={Rectangle} alt="" />

@@ -43,6 +43,7 @@ export const CartSlice = createSlice({
         months[date.getMonth()] +
         ", " +
         date.getFullYear();
+      console.log(actions.payload);
       const pr = {
         id: uuidv4(),
         ...actions.payload,
@@ -60,7 +61,17 @@ export const CartSlice = createSlice({
         localStorage.setItem("dataBasketCart", JSON.stringify(state.cart));
       }
     },
+    DeleteProduct: (state, actions) => {
+      let index = state.cart.findIndex((element) => element.id === actions);
+      state.cart = state.cart.splice(index, 1);
+      if (state.cart.length === 1) {
+        console.log("one")
+        // localStorage.clear("dataBasketCart");
+      } else {
+        localStorage.setItem("dataBasketCart", JSON.stringify(state.cart));
+      }
+    },
   },
 });
-export const { AddToCart } = CartSlice.actions;
+export const { AddToCart, DeleteProduct } = CartSlice.actions;
 export default CartSlice.reducer;

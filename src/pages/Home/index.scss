@@ -43,11 +43,13 @@
 .mask-box {
   position: absolute;
   width: 742px;
-  object-fit: contain;
-  object-position: center center;
   height: 336px;
   left: -4%;
   bottom: -65%;
+  img {
+    object-position: center center;
+    object-fit: contain;
+  }
 }
 .christmas-crackers {
   position: absolute;
@@ -65,7 +67,19 @@
 }
 .icon-prize_1 {
   position: absolute;
-  left: -15%;
+  left: -5%;
+}
+.icon-prize_2 {
+  position: absolute;
+  right: -5%;
+  bottom: -20%;
+}
+.heart-sticker,
+.icon-prize_2,
+.icon-prize_1 {
+  img {
+    width: 60px;
+  }
 }
 .circle {
   position: absolute;
@@ -73,11 +87,7 @@
   top: 16%;
   transform: translate(-50%);
 }
-.icon-prize_2 {
-  position: absolute;
-  right: -15%;
-  bottom: -20%;
-}
+
 .card {
   background: linear-gradient(
     180deg,
@@ -89,18 +99,26 @@
 }
 .heart-sticker {
   position: absolute;
-  left: -15%;
+  left: -7%;
   top: 6%;
 }
+
 .cake-sticker {
   position: absolute;
-  right: -15%;
+  right: -6%;
   top: 60%;
 }
 .surprise-sticker {
   position: absolute;
-  left: -15%;
+  left: -7%;
   bottom: -2%;
+}
+.cake-sticker,
+.heart-sticker,
+.surprise-sticker {
+  img {
+    width: 50px;
+  }
 }
 .card-2x {
   padding: 15px;

@@ -52,14 +52,13 @@ export default function SingleProduct() {
   // for labels validation
 
   const onSubmit = (values, actions) => {
-    console.log(values);
-    console.log(actions);
-    const product = values;
+    const product = { ...values, ...prod };
+    console.log(product);
     if (!values) {
       console.log("errors still handling !");
     } else {
       actions.resetForm();
-      dispatch(AddToCart(values));
+      dispatch(AddToCart(product));
     }
   };
 
