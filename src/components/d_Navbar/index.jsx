@@ -60,7 +60,7 @@ export default function Default_LayOut({ userInfo }) {
                           <div className="flex flex-col">
                             <Link
                               className="decoration-transparent block"
-                              to={`/userInfo/${userInfo.id}`}
+                              to={`/profile`}
                             >
                               <div className="user-information flex flex-row justify-between items-center">
                                 <div className="user-name ml-auto w-full pr-2">

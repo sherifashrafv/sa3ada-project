@@ -36,7 +36,7 @@ export default function SideMenu({ activeSide, cancelActive }) {
     <>
       {createPortal(
         <div
-          onClick={() => cancelActive()}
+          onClickCapture={() => cancelActive()}
           className={
             activeSide ? "sideMenu-container active" : "sideMenu-container"
           }
@@ -109,7 +109,7 @@ export default function SideMenu({ activeSide, cancelActive }) {
                     className="user-box"
                     onClick={() => dispatch(RIGSTER_BOX_TRRIGER())}
                   >
-                    {userInfo.name.slice(0, 1)}
+                    {userInfo.name?.slice(0, 1)}
                     {navBar.registerBox ? (
                       <div className="user-links flex flex-col">
                         <div className="flex flex-col">
@@ -124,7 +124,7 @@ export default function SideMenu({ activeSide, cancelActive }) {
                                 </p>
                               </div>
                               <div className="user-image ml-auto df-bg-user ">
-                                <span>{userInfo.name.substr(0, 1)}</span>
+                                <span>{userInfo.name?.substr(0, 1)}</span>
                               </div>
                             </div>
                           </Link>

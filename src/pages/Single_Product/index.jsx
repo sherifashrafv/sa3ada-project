@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import BreadCrumb from "../../components/breadCrumb";
 import imageIcon from "../../assets/Icons/image icon.svg";
 import "./index.css";
@@ -11,15 +11,26 @@ import { motion } from "framer-motion";
 import { useFormik } from "formik";
 import { AddToCart } from "../../store/cart";
 import { useDispatch } from "react-redux";
+import { FreeMode, Thumbs } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Swal from "sweetalert2";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
 export default function SingleProduct() {
   const { id } = useParams();
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   const [prod, setProd] = useState();
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState(null);
   const [activeShape, setActiveShape] = useState(null);
   const [activeType, setActiveType] = useState(null);
   const dispatch = useDispatch();
-  // get-ProductInformation
+  // get-Product-details
   const getProductInfo = async (id) => {
     const docRef = doc(db, "products", id);
     await getDoc(docRef)
@@ -35,58 +46,44 @@ export default function SingleProduct() {
         setLoading(false);
       });
   };
-  const thumnails = document.getElementsByClassName("thumnails");
-  const activeImages = document.getElementsByClassName("active");
-  const changeSrc = useCallback(() => {
-    console.log("re reloade");
-    for (var i = 0; i < thumnails.length; i++) {
-      thumnails[i].addEventListener("click", function () {
-        if (activeImages.length > 0) {
-          activeImages[0].classList.remove("active");
-        }
-        this.classList.add("active");
-      });
-    }
-  }, []);
 
   // for labels validation
-
   const onSubmit = (values, actions) => {
     const product = { ...values, ...prod };
-    console.log(product);
-    if (!values) {
-      console.log("errors still handling !");
+    const user = localStorage.getItem("user-info");
+    if (!user) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "من فضلك سجل الدخول اولا",
+        showConfirmButton: false,
+        timer: 2000,
+      });
     } else {
-      actions.resetForm();
-      dispatch(AddToCart(product));
+      if (!values) {
+        console.log("errors still handling !");
+      } else {
+        actions.resetForm();
+        dispatch(AddToCart(product));
+      }
     }
+    console.log(product);
   };
 
-  const {
-    values,
-    errors,
-    touched,
-    handleBlur,
-    setFieldValue,
-    handleChange,
-    setTouched,
-    handleSubmit,
-  } = useFormik({
-    initialValues: {
-      shape: "",
-      taste: "",
-      image: null,
-      typeCk: "",
-      inCake: "",
-      inCard: "",
-    },
-    validationSchema: addToCartSchema,
-    onSubmit,
-  });
+  const { values, errors, touched, setFieldValue, setTouched, handleSubmit } =
+    useFormik({
+      initialValues: {
+        shape: "",
+        taste: "",
+        image: null,
+        typeCk: "",
+        inCake: "",
+        inCard: "",
+      },
+      validationSchema: addToCartSchema,
+      onSubmit,
+    });
   console.log(errors);
-  useEffect(() => {
-    changeSrc();
-  }, []);
   useEffect(() => {
     getProductInfo(id);
   }, [id]);
@@ -94,6 +91,7 @@ export default function SingleProduct() {
   return (
     <>
       <BreadCrumb />
+
       {loading ? (
         <p>loading ...</p>
       ) : (
@@ -114,34 +112,48 @@ export default function SingleProduct() {
             </div>
             <div className="row my-10">
               <div className="grid grid-cols-2 gap-20">
-                {/* dadsadsadasdda */}
+                {/* start-thumnails */}
                 <div className="image-holder">
-                  <div
-                    style={{ backgroundImage: `url("${prod.image}")` }}
-                  ></div>
-                  <img
-                    id="featured"
-                    className="w-full h-[532px] object-fill"
-                    src={prod.image}
-                  />
+                  <Swiper
+                    spaceBetween={10}
+                    thumbs={{ swiper: thumbsSwiper }}
+                    modules={[FreeMode, Thumbs]}
+                    className="mySwiper2"
+                  >
+                    {prod.gallary.map((prod, idx) => (
+                      <SwiperSlide key={idx}>
+                        <img
+                          className="w-full h-[532px] thumnails object-fill"
+                          role="button"
+                          id="img-slider"
+                          src={prod}
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
                   <h1 className="text-right pr-3 my-3 text-[#575757]">
                     اختر شكل الكيكه
                   </h1>
-                  <div className="img-gallery gap-5 grid grid-cols-5 my-3">
-                    {prod.gallary.map((prod, idx) => (
-                      <div key={idx}>
-                        <img
-                          role="button"
-                          className="thumnails "
-                          id="img-slider"
-                          src={prod}
-                          onClickCapture={() => changeSrc()}
-                        />
-                      </div>
-                    ))}
+                  <div className="img-gallery my-3">
+                    <Swiper
+                      onSwiper={setThumbsSwiper}
+                      spaceBetween={10}
+                      slidesPerView={4}
+                      freeMode={true}
+                      watchSlidesProgress={true}
+                      modules={[FreeMode, Thumbs]}
+                      id="thumnails-pics"
+                      className="grid grid-cols-5 gap-5"
+                    >
+                      {prod.gallary.map((prod, idx) => (
+                        <SwiperSlide key={idx}>
+                          <img role="button" id="img-slider" src={prod} />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   </div>
                 </div>
-                {/* sadasds */}
+                {/* done ! */}
                 <div>
                   <img
                     className="w-full h-[532px] object-fill"
@@ -271,12 +283,13 @@ export default function SingleProduct() {
               <div className="grid grid-cols-2 gap-5">
                 <div className="flex flex-col">
                   <label
-                    className="text-[14px] mb-5  font-semibold text-[#575757]"
+                    className="text-[14px] mb-1  font-semibold text-[#575757]"
                     htmlFor=""
                   >
                     النص المكتوب على الكيك
                   </label>
                   <motion.div
+                    className="mb-5"
                     initial={{ opacity: 0, y: "50%" }}
                     animate={{ opacity: 1, x: "0%" }}
                     transition={{ duration: 0.9 }}
@@ -299,12 +312,13 @@ export default function SingleProduct() {
                 </div>
                 <div className="flex flex-col">
                   <label
-                    className="text-[14px] mb-5  font-semibold text-[#575757]"
+                    className="text-[14px] mb-1  font-semibold text-[#575757]"
                     htmlFor=""
                   >
                     النص المكتوب على الكارت
                   </label>
                   <motion.div
+                    className="mb-5"
                     initial={{ opacity: 0, y: "50%" }}
                     animate={{ opacity: 1, x: "0%" }}
                     transition={{ duration: 0.9 }}
@@ -329,7 +343,13 @@ export default function SingleProduct() {
                   <p className="text-[14px] mb-5  font-semibold text-[#575757]">
                     رفع صورة للكيك
                   </p>
-                  <div className="img_uploader  relative">
+                  <div
+                    className={
+                      errors.inCard && touched
+                        ? "img_uploader error relative"
+                        : "img_uploader relative"
+                    }
+                  >
                     <label
                       id="file_img"
                       className="text-[14px] mb-5  font-semibold text-[#575757]"

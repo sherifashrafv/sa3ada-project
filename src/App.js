@@ -20,6 +20,7 @@ import EditPassword from "./pages/Edit-Password";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./pages/404";
 function App() {
   const location = useLocation();
   const userData = localStorage.getItem("user-info");
@@ -42,11 +43,12 @@ function App() {
             <Route path="/brithDay" element={<BrithDay />}></Route>
             <Route path="/product/:id" element={<SingleProduct />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
             <Route
               path="/profile"
               element={
                 <ProtectedRoute userData={userData}>
-                  <Profile />
+                  <Profile userData={user} />
                 </ProtectedRoute>
               }
             >
@@ -54,7 +56,7 @@ function App() {
                 path="/profile"
                 element={
                   <ProtectedRoute userData={userData}>
-                    <ProfileDetails />
+                    <ProfileDetails userData={user} />
                   </ProtectedRoute>
                 }
               ></Route>
@@ -62,7 +64,7 @@ function App() {
                 path="/profile/orders"
                 element={
                   <ProtectedRoute userData={userData}>
-                    <Orders />
+                    <Orders userData={user} />
                   </ProtectedRoute>
                 }
               ></Route>
@@ -77,10 +79,7 @@ function App() {
             </Route>
             <Route
               path="/payment-process"
-              element={
-                <PaymentPorccess />
-                // </ProtectedRoute>
-              }
+              element={<PaymentPorccess />}
             ></Route>
           </Route>
           <Route path="/about" element={<CustomeLayout />}></Route>

@@ -12,6 +12,7 @@ import {
   getDocs,
   query,
   where,
+  updateDoc,
 } from "firebase/firestore";
 import { LOGIN_MODAL, REGISTER_MODAL } from "./navbarSlice";
 import { toast } from "react-toastify";
@@ -31,6 +32,7 @@ export const signUp = createAsyncThunk(
             email: email,
             password: password,
             id: user.uid,
+            phoneNumber: "",
           }).then(() => {
             dispatch(REGISTER_MODAL());
             window.location.reload();
@@ -105,10 +107,31 @@ export const login = createAsyncThunk("auth/logIn", async (USER, thunkApi) => {
     return rejectWithValue(e.Message);
   }
 });
+export const editUserInformation = createAsyncThunk(
+  "auth/editUserInformation",
+  async (newData, thunkApi) => {
+    console.log(newData);
+    const { rejectWithValue, dispatch } = thunkApi;
+    try {
+      const { id, fullName, email, phoneNumber } = newData;
+      const userRef = await doc(db, "users", id);
+      await updateDoc(userRef, {
+        name: fullName,
+        email: email,
+        phoneNumber: phoneNumber,
+      }).then(() => {
+        dispatch(getUserData(id));
+      });
+    } catch (e) {
+      return rejectWithValue(e.Message);
+    }
+  }
+);
 const initialState = {
   user: null,
   loader: false,
   errorServer: "",
+  editLoader: false,
 };
 export const authSlice = createSlice({
   name: "auth",
@@ -184,6 +207,16 @@ export const authSlice = createSlice({
     },
     [getUserData.rejected]: (state, actions) => {
       console.log(actions);
+      state.errorServer = actions;
+    },
+    // editUserInformation
+    [editUserInformation.pending]: (state, actions) => {
+      state.editLoader = true;
+    },
+    [editUserInformation.fulfilled]: (state, actions) => {
+      state.editLoader = false;
+    },
+    [editUserInformation.rejected]: (state, actions) => {
       state.errorServer = actions;
     },
   },

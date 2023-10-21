@@ -22,7 +22,6 @@ export default function Profile() {
                   <Outlet />
                 </motion.div>
               </div>
-              {/* aside-bar */}
               <ProfileSideBar />
             </div>
           </div>
