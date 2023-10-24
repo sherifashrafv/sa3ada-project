@@ -12,6 +12,7 @@ import ShoppingCart from "../../assets/NavBar/shoppingCart.svg";
 import { getUserData, logOut } from "../../store/auth";
 import {
   CART_TRRIGGER,
+  CART_TRRIGGER_SIDE_MENU,
   LOGIN_MODAL,
   REGISTER_MODAL,
   RIGSTER_BOX_TRRIGER,
@@ -103,66 +104,30 @@ export default function SideMenu({ activeSide, cancelActive }) {
                   )}
                 </NavLink>
               </li>
+
               {userInfo !== null ? (
                 <>
-                  <li
-                    className="user-box"
-                    onClick={() => dispatch(RIGSTER_BOX_TRRIGER())}
-                  >
-                    {userInfo.name?.slice(0, 1)}
-                    {navBar.registerBox ? (
-                      <div className="user-links flex flex-col">
-                        <div className="flex flex-col">
-                          <Link
-                            className="decoration-transparent block"
-                            to={`/userInfo/${userInfo.id}`}
-                          >
-                            <div className="user-information flex flex-row justify-between items-center">
-                              <div className="user-name ml-auto w-full pr-2">
-                                <p className="font-bold text-[16px] text-black text-right">
-                                  {userInfo.name}
-                                </p>
-                              </div>
-                              <div className="user-image ml-auto df-bg-user ">
-                                <span>{userInfo.name?.substr(0, 1)}</span>
-                              </div>
-                            </div>
-                          </Link>
-                          <div className="email-info cursor-auto">
-                            <span className="text-black ">
-                              {/* {userInfo.email} */}
-                            </span>
-                          </div>
-                          <div className="flex flex-row justify-between items-center mt-3">
-                            <div
-                              onClick={() => dispatch(logOut())}
-                              role="button"
-                              className="user-name ml-auto w-full pr-2 "
-                            >
-                              <p className="font-bold text-[12px] text-black text-right">
-                                تسجيل الخروج
-                              </p>
-                            </div>
-                            <div className="logOut-icon ml-auto">
-                              <img src={LogOutIcon} alt="" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      ""
-                    )}
+                  <li className="flex hover:bg-slate-200 justify-center items-center">
+                    <Link
+                      className="flex justify-center gap-5 items-center decoration-transparent block"
+                      to={`/profile`}
+                    >
+                      <i class="fa-regular text-[blueviolet] fa-user m-auto"></i>
+                      <span className="text-[#616161]">حسابك</span>
+                    </Link>
                   </li>
-                  <li
-                    onClick={() => dispatch(CART_TRRIGGER())}
-                    className="cursor-pointer"
-                  >
-                    <img src={ShoppingCart} alt="" />
+                  <li className="flex justify-center gap-5 items-center cursor-pointer">
+                    <Link
+                      className="flex justify-center gap-5 items-center decoration-transparent block"
+                      to="/cart"
+                    >
+                      <span>
+                        <i class="fa-solid fa-cart-shopping text-[#f4b512]"></i>
+                      </span>
+                      <span>السلة</span>
+                    </Link>
                   </li>
                   <SideCart />
-                  <li className="cursor-pointer">
-                    <img src={NotificationIcon} alt="" />
-                  </li>
                 </>
               ) : (
                 <>

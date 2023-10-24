@@ -54,13 +54,13 @@ export default function BasicPackage() {
       <div className="box p-[33px] pb-[5rem] m-auto  mt-[7rem]">
         <div className="container m-auto">
           <div className="row">
-            <div className="grid grid-cols-2">
-              <div className="flex flex-row justify-center items-center">
-                <img src={cake} alt="" />
-              </div>
-              <div>
+            <div className="flex justify-end">
+              <div className="w-[100%]">
                 <div className="flex flex-row justify-end">
-                  <form dir="rtl" className="form-search-product relative">
+                  <form
+                    dir="rtl"
+                    className="w-[491px] max-w[100%] form-search-product relative"
+                  >
                     <input type="text" placeholder="ابحث عن المنتج" />
                     <button type="submit" className="searh-icon">
                       <img src={search} alt="" />

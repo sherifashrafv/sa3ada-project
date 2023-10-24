@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import BreadCrumb from "../../components/breadCrumb";
 import imageIcon from "../../assets/Icons/image icon.svg";
 import "./index.css";
-import { useCallback } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { addToCartSchema } from "../../Validations";
@@ -19,6 +18,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { ToastContainer } from "react-toastify";
 
 export default function SingleProduct() {
   const { id } = useParams();
@@ -63,7 +63,6 @@ export default function SingleProduct() {
       if (!values) {
         console.log("errors still handling !");
       } else {
-        actions.resetForm();
         dispatch(AddToCart(product));
       }
     }
@@ -91,9 +90,48 @@ export default function SingleProduct() {
   return (
     <>
       <BreadCrumb />
-
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       {loading ? (
-        <p>loading ...</p>
+        <div className="container">
+          <div className="row">
+            <div className="grid lg:grid-cols-2 sm:grid-cols-1  md:grid-cols-2 my-[5rem] gap-20">
+              <div class="wrapper">
+                <div class="card">
+                  <div class="card__img skeleton"></div>
+                  <div class="card__body">
+                    <div class="card__text skeleton"></div>
+                    <div class="card__text skeleton"></div>
+                    <div class="card__text skeleton"></div>
+                    <div class="card__text skeleton"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="wrapper">
+                <div class="card">
+                  <div class="card__img skeleton"></div>
+                  <div class="card__body">
+                    <div class="card__text skeleton"></div>
+                    <div class="card__text skeleton"></div>
+                    <div class="card__text skeleton"></div>
+                    <div class="card__text skeleton"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       ) : (
         <div className="container m-auto my-[5rem]">
           <form onSubmit={handleSubmit}>
@@ -111,7 +149,7 @@ export default function SingleProduct() {
               </div>
             </div>
             <div className="row my-10">
-              <div className="grid grid-cols-2 gap-20">
+              <div className="thum-wrapper grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-20">
                 {/* start-thumnails */}
                 <div className="image-holder">
                   <Swiper
@@ -123,7 +161,7 @@ export default function SingleProduct() {
                     {prod.gallary.map((prod, idx) => (
                       <SwiperSlide key={idx}>
                         <img
-                          className="w-full h-[532px] thumnails object-fill"
+                          className="product-image-thumnail w-full lg:h-[532px] md:h-[100%] sm:h-[100%] thumnails object-fill"
                           role="button"
                           id="img-slider"
                           src={prod}

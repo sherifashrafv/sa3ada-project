@@ -35,5 +35,6 @@ export const {
   RIGSTER_BOX_TRRIGER,
   LOGIN_MODAL,
   REGISTER_MODAL,
+  CART_TRRIGGER_SIDE_MENU,
 } = navbarSlice.actions;
 export default navbarSlice.reducer;

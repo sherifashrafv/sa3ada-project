@@ -74,8 +74,8 @@ export default function Carousel() {
             key={indx}
             className="bg-white brand-card rounded-[15px] border-2 border-b-[#F2F2F2] "
           >
-            <div className="flex w-[159px] h-[150px] flex-col items-center justify-center">
-              <img className="" src={image} alt="" />
+            <div className="flex w-[100%] h-[150px] flex-col items-center justify-center">
+              <img className="w-[159px] object-scale-down" src={image} alt="" />
             </div>
           </div>
         ))}

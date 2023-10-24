@@ -7,11 +7,8 @@
   border-color: transparent;
   overflow: hidden;
   &:hover {
-    border: 2px solid #f14537 !important;
     .product-title {
       color: #f14537;
-      margin-top: -0.5rem;
-      margin-right: 2.5rem;
     }
   }
 }

@@ -11,14 +11,14 @@ export default function Footer() {
     <footer className="sa3ad-footer  p-[4rem]">
       <div className="container m-auto">
         <div className="row">
-          <div className="grid grid-cols-5 gap-10 items-center">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 items-center">
             <div>
               <img src={FooterImage} alt="" />
             </div>
-            <div className="col-span-2 flex flex-row gap-10 justify-end">
+            <div className=" footer-links-2x col-span-2 flex flex-row gap-10 justify-end">
               <div className="flex flex-col items-end mb-2 text-right">
                 <h1 className="footer-title mb-4">الاقسام</h1>
-                <div className="flex flex-row items-center gap-10">
+                <div className="footer-links-2x flex flex-row items-center gap-10">
                   <ul className="footer-links text-right">
                     <li className="mb-3">
                       <Link>هدايا زواج</Link>

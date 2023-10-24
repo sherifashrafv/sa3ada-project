@@ -8,11 +8,6 @@
   border-color: transparent;
   overflow: hidden;
 }
-.product-card:hover {
-  border: 2px solid #f14537 !important;
-}
 .product-card:hover .product-title {
   color: #f14537;
-  margin-top: -0.5rem;
-  margin-right: 2.5rem;
 }/*# sourceMappingURL=index.css.map */

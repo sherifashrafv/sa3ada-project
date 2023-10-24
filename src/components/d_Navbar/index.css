@@ -18,7 +18,7 @@
   transition: all 0.5s ease-in;
 }
 
-.sticky-navbar::before {
+.df-navbar::before {
   content: "";
   position: absolute;
   left: 50%;

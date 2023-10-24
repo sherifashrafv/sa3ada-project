@@ -36,9 +36,9 @@ export default function Default_LayOut({ userInfo }) {
     <>
       <ModalContainer login={navBar.login} register={navBar.register} />
       <div className="df_bg">
-        <div className="sticky-navbar container relative mx-auto py-3">
+        <div className=" container relative mx-auto py-3">
           <div className="flex flex-row justify-between items-center">
-            <div className="flex flex-col gap-3">
+            <div className="df-navbar md:hidden xs:hidden sm:hidden lg:flex flex-col gap-3">
               <div className="nav-links left-links lg:flex xl:flex md:hidden sm:hidden gap-2 items-center h-[30px]">
                 <span>
                   <img src={LangIcon} alt="" />

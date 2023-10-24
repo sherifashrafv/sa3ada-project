@@ -119,7 +119,7 @@ export default function Home() {
               <span className="surprise-sticker">
                 <img src={SurpriseSticker} alt="" />
               </span>
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
                 <div className="card rounded-2xl flex flex-col gap-2 items-end">
                   <img src={Tape1} alt="" />
                   <div className="py-6 px-10">
@@ -158,7 +158,7 @@ export default function Home() {
               <span className="surprise-sticker">
                 <img src={SurpriseSticker} alt="" />
               </span>
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
                 <div className="card rounded-2xl flex flex-col gap-2 items-end">
                   <div className="py-6 px-10">
                     <h1 className="card-title mb-2 text-right text-[48px] font-bold">
@@ -191,7 +191,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="card-2x my-5 grid grid-cols-2">
+              <div className="card-2x my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                 <div className="mt-10">
                   <h1 className="font-bold text-right  pr-5 text-[48px]">
                     هدايا مولود جديد
@@ -213,7 +213,7 @@ export default function Home() {
         <section>
           <div className="container m-auto">
             <div className="row">
-              <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
+              <div className="sada-box-wrapper lg:grid xxs:flex md:grid sm:flex sm:flex-col-reverse xxs:flex-col-reverse lg:grid-cols-2 md:grid-cols-2 ">
                 <div className="sada-box flex flex-col gap-5">
                   <div className="w-[200px] text-right">
                     <img className="h-[172px] ml-auto" src={Rectangle} alt="" />
@@ -285,7 +285,7 @@ export default function Home() {
             </div>
           </div>
           <div className="row">
-            <div className="grid px-9 grid-cols-5 mt-[8rem]  gap-14 pb-[8rem]">
+            <div className="images-gallary lg:grid md:grid  px-9 sm:grid-cols-1 md:grid-cols-5 lg:grid-cols-5  mt-[8rem]  gap-14 pb-[8rem]">
               <img src={FristCake} alt="" />
               <img className="mt-[8rem]" src={SecondCake} alt="" />
               <img src={ThirdCake} alt="" />

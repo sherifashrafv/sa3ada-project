@@ -10,7 +10,7 @@ export default function BreadCrumb() {
     <section className="bread_crumb py-[6rem]">
       <div className="container m-auto">
         <div className="row">
-          <div className="flex justify-center items-center flex-row">
+          <div className="bread-crumb-wrapper flex justify-center items-center flex-row">
             <div className="flex flex-col text-center">
               <div className="relative w-[100%] h-[100%] flex flex-row justify-between">
                 <span className="right-fly">
